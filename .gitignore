@@ -1,3 +1,8 @@
-downloads/
-targets
+/downloads/
+/targets/
 .DS_Store
+
+bin/
+obj/
+
+packager/native/pack

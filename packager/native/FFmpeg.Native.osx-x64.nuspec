@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata>
+
+    <!-- package -->
+    <id>FFmpeg.Native.osx-x64</id>
+    <title>FFmpeg - Native binaries for macOS x64</title>
+    <version>$version$</version>
+    <description>Native binaries of FFmpeg for macOS (x64)</description>
+    <summary>Native binaries of FFmpeg for macOS (x64)</summary>
+    <projectUrl>https://github.com/EYHN/ffmpeg-package</projectUrl>
+    <repository type="git" url="https://github.com/EYHN/ffmpeg-package" />
+    <tags>FFmpeg binaries</tags>
+
+    <!-- legal -->
+    <license type="expression">GPL-3.0-or-later</license>
+    <authors>EYHN</authors>
+    <owners>EYHN</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright>EYHN</copyright>
+
+  </metadata>
+  <files>
+
+    <!-- The .NET Framework >= 4.6.1 build bits for Mono runtime -->
+    <file src="targets\FFmpeg.Native.osx-x64.targets" target="build/net461" />
+
+    <!-- Include FFmpeg macOS x64 binaries -->
+    <file src="pack\osx-x64\*.dylib" target="runtimes/osx-x64/native" />
+
+    <!-- A dummy reference which prevents NuGet from adding any compilation references when this package is imported -->
+    <file src="_._" target="lib/netstandard1.0" />
+
+  </files>
+</package>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata>
+
+    <!-- package -->
+    <id>FFmpeg.Native</id>
+    <title>FFmpeg - Native binaries</title>
+    <version>$version$</version>
+    <description>Native binaries of FFmpeg</description>
+    <summary>Native binaries of FFmpeg</summary>
+    <projectUrl>https://github.com/EYHN/ffmpeg-native</projectUrl>
+    <repository type="git" url="https://github.com/EYHN/ffmpeg-native" />
+    <tags>FFmpeg binaries</tags>
+
+    <!-- legal -->
+    <license type="expression">GPL-3.0-or-later</license>
+    <authors>EYHN</authors>
+    <owners>EYHN</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright>EYHN</copyright>
+
+    <dependencies>
+      <dependency id="FFmpeg.Native.linux-x64" version="$version$" include="native" />
+      <dependency id="FFmpeg.Native.osx-x64" version="$version$" include="native" />
+      <dependency id="FFmpeg.Native.win-x64" version="$version$" include="native, build" />
+    </dependencies>
+
+  </metadata>
+  <files>
+
+    <!-- A dummy reference which prevents NuGet from adding any compilation references when this package is imported -->
+    <file src="_._" target="lib/netstandard1.0" />
+
+  </files>
+</package>
