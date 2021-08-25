@@ -29,4 +29,4 @@ cp $FFMPEG_LIB/libswscale.5.dylib $TARGETS/osx-x64
 
 chmod 755 $TARGETS/osx-x64/*
 
-tar zcf $TARGETS/osx-x64.tar.gz -C $TARGETS/osx-x64 .
+tar zcf $TARGETS/osx-x64.tar.gz -C $TARGETS osx-x64
