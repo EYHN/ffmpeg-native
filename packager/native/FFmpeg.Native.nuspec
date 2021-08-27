@@ -20,9 +20,11 @@
     <copyright>EYHN</copyright>
 
     <dependencies>
-      <dependency id="FFmpeg.Native.linux-x64" version="$version$" include="native" />
-      <dependency id="FFmpeg.Native.osx-x64" version="$version$" include="native" />
-      <dependency id="FFmpeg.Native.win-x64" version="$version$" include="native, build" />
+      <group targetFramework="netstandard2.0">
+        <dependency id="FFmpeg.Native.linux-x64" version="$version$" include="native" />
+        <dependency id="FFmpeg.Native.osx-x64" version="$version$" include="native" />
+        <dependency id="FFmpeg.Native.win-x64" version="$version$" include="native, build" />
+      </group>
     </dependencies>
 
   </metadata>
