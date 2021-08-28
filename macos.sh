@@ -1,21 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
-DOWNLOADS=$PWD/downloads
+./build-ffmpeg.sh --build
+
 TARGETS=$PWD/targets
 
-mkdir -p $DOWNLOADS
 mkdir -p $TARGETS
-
-CURL="curl --silent --location --retry 3 --retry-max-time 30"
-
-$CURL 'https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:9da28933b9f1abc3b1cf92382d1a8ea051c98f9dd0f4ef47e8d37d2aa9a4769a' \
-    -H 'Host: ghcr.io' \
-    -H 'Authorization: Bearer QQ==' | tar zx -C $DOWNLOADS
 
 mkdir -p $TARGETS/osx-x64
 
-FFMPEG_LIB=$DOWNLOADS/ffmpeg/4.4_2/lib
+FFMPEG_LIB=$PWD/workspace/lib
 
 cp $FFMPEG_LIB/libavcodec.58.dylib $TARGETS/osx-x64
 cp $FFMPEG_LIB/libavdevice.58.dylib $TARGETS/osx-x64
