@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+sudo apt-get -y install patchelf
+
 DOWNLOADS=$PWD/downloads
 TARGETS=$PWD/targets
 
@@ -23,5 +25,9 @@ cp $FFMPEG_LIB/libavutil.so.56 $TARGETS/linux-x64
 cp $FFMPEG_LIB/libpostproc.so.55 $TARGETS/linux-x64
 cp $FFMPEG_LIB/libswresample.so.3 $TARGETS/linux-x64
 cp $FFMPEG_LIB/libswscale.so.5 $TARGETS/linux-x64
+
+for file in $TARGETS/linux-x64/*.so*; do
+    patchelf --set-rpath "\$ORIGIN" $file
+done
 
 tar zcf $TARGETS/linux-x64.tar.gz -C $TARGETS linux-x64
