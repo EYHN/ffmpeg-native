@@ -21,7 +21,6 @@ cp $FFMPEG_LIB/avdevice-58.dll $TARGETS/win-x64
 cp $FFMPEG_LIB/avfilter-7.dll $TARGETS/win-x64
 cp $FFMPEG_LIB/avformat-58.dll $TARGETS/win-x64
 cp $FFMPEG_LIB/avutil-56.dll $TARGETS/win-x64
-cp $FFMPEG_LIB/postproc-55.dll $TARGETS/win-x64
 cp $FFMPEG_LIB/swresample-3.dll $TARGETS/win-x64
 cp $FFMPEG_LIB/swscale-5.dll $TARGETS/win-x64
 
