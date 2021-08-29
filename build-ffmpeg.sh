@@ -718,7 +718,8 @@ download "https://github.com/FFmpeg/FFmpeg/archive/refs/heads/release/4.4.tar.gz
   --extra-libs="${EXTRALIBS}" \
   --pkgconfigdir="$WORKSPACE/lib/pkgconfig" \
   --pkg-config-flags="--static" \
-  --prefix="${WORKSPACE}"
+  --prefix="${WORKSPACE}" \
+  --install-name-dir="@loader-path"
 
 execute make -j $MJOBS
 execute make install
