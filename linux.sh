@@ -11,11 +11,11 @@ mkdir -p $TARGETS
 
 CURL="curl --silent --location --retry 3 --retry-max-time 30"
 
-$CURL 'https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2021-11-28-12-23/ffmpeg-n4.4.1-2-gcc33e73618-linux64-gpl-shared-4.4.tar.xz' | tar Jx -C $DOWNLOADS
+$CURL 'https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n4.4-latest-linux64-gpl-shared-4.4.tar.xz' | tar Jx -C $DOWNLOADS
 
 mkdir -p $TARGETS/linux-x64
 
-FFMPEG_LIB=$DOWNLOADS/ffmpeg-n4.4.1-2-gcc33e73618-linux64-gpl-shared-4.4/lib
+FFMPEG_LIB=$DOWNLOADS/ffmpeg-n4.4-latest-linux64-gpl-shared-4.4/lib
 
 cp $FFMPEG_LIB/libavcodec.so.58 $TARGETS/linux-x64
 cp $FFMPEG_LIB/libavdevice.so.58 $TARGETS/linux-x64
