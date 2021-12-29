@@ -880,9 +880,8 @@ download "https://github.com/FFmpeg/FFmpeg/archive/refs/heads/release/$FFMPEG_VE
 ./configure "${CONFIGURE_OPTIONS[@]}" \
   --disable-debug \
   --disable-doc \
-  --disable-shared \
+  --enable-shared \
   --enable-pthreads \
-  --enable-static \
   --enable-small \
   --enable-version3 \
   --extra-cflags="${CFLAGS}" \
@@ -892,53 +891,10 @@ download "https://github.com/FFmpeg/FFmpeg/archive/refs/heads/release/$FFMPEG_VE
   --pkgconfigdir="$WORKSPACE/lib/pkgconfig" \
   --pkg-config-flags="--static" \
   --prefix="${WORKSPACE}" \
-  --extra-version="${EXTRA_VERSION}"
+  --extra-version="${EXTRA_VERSION}" \
+  --install-name-dir="@loader_path"
 
 execute make -j $MJOBS
 execute make install
-
-INSTALL_FOLDER="/usr/bin"
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  INSTALL_FOLDER="/usr/local/bin"
-fi
-
-verify_binary_type
-
-echo ""
-echo "Building done. The following binaries can be found here:"
-echo "- ffmpeg: $WORKSPACE/bin/ffmpeg"
-echo "- ffprobe: $WORKSPACE/bin/ffprobe"
-echo "- ffplay: $WORKSPACE/bin/ffplay"
-echo ""
-
-if [[ "$AUTOINSTALL" == "yes" ]]; then
-  if command_exists "sudo"; then
-    sudo cp "$WORKSPACE/bin/ffmpeg" "$INSTALL_FOLDER/ffmpeg"
-    sudo cp "$WORKSPACE/bin/ffprobe" "$INSTALL_FOLDER/ffprobe"
-    sudo cp "$WORKSPACE/bin/ffplay" "$INSTALL_FOLDER/ffplay"
-    echo "Done. FFmpeg is now installed to your system."
-  else
-    cp "$WORKSPACE/bin/ffmpeg" "$INSTALL_FOLDER/ffmpeg"
-    cp "$WORKSPACE/bin/ffprobe" "$INSTALL_FOLDER/ffprobe"
-    cp "$WORKSPACE/bin/ffplay" "$INSTALL_FOLDER/ffplay"
-    echo "Done. FFmpeg is now installed to your system."
-  fi
-elif [[ ! "$SKIPINSTALL" == "yes" ]]; then
-  read -r -p "Install these binaries to your $INSTALL_FOLDER folder? Existing binaries will be replaced. [Y/n] " response
-  case $response in
-  [yY][eE][sS] | [yY])
-    if command_exists "sudo"; then
-      sudo cp "$WORKSPACE/bin/ffmpeg" "$INSTALL_FOLDER/ffmpeg"
-      sudo cp "$WORKSPACE/bin/ffprobe" "$INSTALL_FOLDER/ffprobe"
-      sudo cp "$WORKSPACE/bin/ffplay" "$INSTALL_FOLDER/ffplay"
-    else
-      cp "$WORKSPACE/bin/ffmpeg" "$INSTALL_FOLDER/ffmpeg"
-      cp "$WORKSPACE/bin/ffprobe" "$INSTALL_FOLDER/ffprobe"
-      cp "$WORKSPACE/bin/ffplay" "$INSTALL_FOLDER/ffplay"
-    fi
-    echo "Done. FFmpeg is now installed to your system."
-    ;;
-  esac
-fi
 
 exit 0
