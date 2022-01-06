@@ -24,6 +24,7 @@ cp $FFMPEG_LIB/libavformat.so.58 $TARGETS/linux-x64
 cp $FFMPEG_LIB/libavutil.so.56 $TARGETS/linux-x64
 cp $FFMPEG_LIB/libswresample.so.3 $TARGETS/linux-x64
 cp $FFMPEG_LIB/libswscale.so.5 $TARGETS/linux-x64
+cp $FFMPEG_LIB/libpostproc.so.55 $TARGETS/linux-x64
 
 chmod 755 $TARGETS/linux-x64/*
 
